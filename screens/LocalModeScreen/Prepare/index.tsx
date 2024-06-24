@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { PlayerSelect } from "./PlayerSelect"
 import { ModeContext, useMode } from "src/contexts/mode"
@@ -8,10 +8,6 @@ import { GoNextButton } from "src/components/goNextButton"
 export const Prepare = () => {
   const [ prepareMode, setPrepareMode ] = useState<number>(0)
   const [ , setLocalMode ] = useMode()
-
-  useEffect(() => {
-
-  }, [])
 
   return (
     <SafeAreaView
@@ -31,6 +27,7 @@ export const Prepare = () => {
           label="次へ"
           lastLabel="ゲーム開始"
           onLastClicked={() => {
+
             setLocalMode(prev=>prev+1)
           }}
         />

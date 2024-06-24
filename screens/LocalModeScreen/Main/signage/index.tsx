@@ -1,34 +1,29 @@
 import { View } from "react-native"
 import { PlayerAvatar } from "src/components/playerAvatar"
 import { Container } from "./container"
-import { Settings } from "./settings"
 import { Text } from "@rneui/base"
 
-export const Signage = () => {
+export const Signage = ({currentPlayerIndex} : {currentPlayerIndex: number}) => {
   return (
-    <>
-      <Container>
-        <View
+    <Container>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: 'center',
+          gap: 9,
+          padding: 16,
+          borderRadius: 16,
+          backgroundColor: "#bb9e74",
+        }}
+      >
+        <PlayerAvatar index={ currentPlayerIndex }/>
+        <Text
           style={{
-            flexDirection: "row",
-            alignItems: 'center',
-            gap: 9,
-            padding: 16,
-            borderRadius: 16,
-            backgroundColor: "#bb9e74",
+            fontFamily: "YasashisaGothicBold",
+            fontSize: 24,
           }}
-        >
-          <PlayerAvatar index={0}/>
-          <Text
-            style={{
-              fontFamily: "YasashisaGothicBold",
-              fontSize: 24,
-            }}
-          >のターン</Text>
-        </View>
-      </Container>
-      <Settings/>
-    </>
-
+        >のターン</Text>
+      </View>
+    </Container>
   )
 }

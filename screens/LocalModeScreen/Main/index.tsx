@@ -1,21 +1,28 @@
+import { useEffect, useState } from "react"
 import { SafeAreaView } from "react-native"
-import { Board } from "./board"
-import { Signage } from "./signage"
-import { Text } from "@rneui/base"
-import { useCurrentStep } from "globalStates/gameState"
-import { OkButton } from "./okButton"
-import { useState } from "react"
+import { useCurrentStep, useCurrentTurn, useRestChairs } from "globalStates/gameState"
 import { DialogVisibleContext, SelectedChairContext } from "./context"
-import { ConfirmDialog } from "./confirmDialog"
+import { Step1 } from "./step1"
+import { Step2 } from "./step2"
+import { Step3 } from "./step3"
+import { Settings } from "./settings"
 
 //スコアを表示するボード
 //円盤上にChairを描画する
 
 
 export const Main = () => {
-  const [ currentStep ] = useCurrentStep()
+  const [ currentStep, setCurrentStep ] = useCurrentStep()
+  const [ , setCurrentTurn ]  = useCurrentTurn()
+  const [ , setRestChairs ] = useRestChairs()
   const [ selectedChair, setSelectedChair ] = useState(-1)
   const [ dialogVisible, setDialogVisible ] = useState(false)
+
+  useEffect(() => {
+    setCurrentStep(1)
+    setCurrentTurn(1)
+    setRestChairs([1,2,3,4,5,6,7,8,9,10,11,12])
+  }, [])
 
   return (
     <SelectedChairContext.Provider value={[selectedChair, setSelectedChair]}>
@@ -30,20 +37,11 @@ export const Main = () => {
             backgroundColor: "#fffbcf",
           }}
         >
-          <Signage/>
-          <Text
-            style={{
-              fontFamily: "TsunagiGothic",
-              fontSize: 32,
-              position: "absolute",
-              top: 260,
-            }}
-          >デンキイスをしかけろ</Text>
-          <Text>ステップ：{currentStep}</Text>
-          <Board/>
-          <OkButton/>
+          {currentStep===1 && <Step1/>}
+          {currentStep===2 && <Step2/>}
+          {currentStep===3 && <Step3/>}
         </SafeAreaView>
-        <ConfirmDialog/>
+        <Settings/>
       </DialogVisibleContext.Provider>
     </SelectedChairContext.Provider>
 

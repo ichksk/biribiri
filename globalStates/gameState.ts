@@ -66,6 +66,6 @@ export const useRestChairs = () => useRecoilState(restChairsAtom)
 
 export const currentStepAtom = atom<number>({
   key: "currentStepAtom",
-  default: 0,
+  default: 1,
 })
 export const useCurrentStep = () => useRecoilState(currentStepAtom)
