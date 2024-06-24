@@ -1,12 +1,15 @@
-import { SafeAreaView } from "react-native"
+import { SafeAreaView, View } from "react-native"
 import { Board } from "./board"
 import { Signage } from "./signage"
+import { PlayerAvatar } from "src/components/playerAvatar"
+import { useGameState } from "globalStates/gameState"
 
 //スコアを表示するボード
 //円盤上にChairを描画する
 
 
 export const Main = () => {
+  const [ gameState, setGameState ] = useGameState()
 
   return (
     <SafeAreaView

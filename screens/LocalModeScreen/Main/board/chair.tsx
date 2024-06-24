@@ -25,6 +25,9 @@ export const Chair = (props:ChairProps) => {
         alignItems: "center",
         justifyContent: "center",
       }}
+      onPress={() => {
+        console.log(props.index)
+      }}
     >
       <Text
         style={{

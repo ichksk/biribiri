@@ -72,9 +72,6 @@ export const PlayerAvatar = (props: PlayerAvatarProps ) => {
               >
                 {[0, 1, 2, 3].map((x) => (
                   <Avatar
-                    imageProps={{
-
-                    }}
                     key={x}
                     size={64}
                     rounded
@@ -86,6 +83,7 @@ export const PlayerAvatar = (props: PlayerAvatarProps ) => {
                       }))
                       setDialogOpen(false)
                     }}
+                    {...props}
                   />
                 ))}
               </View>

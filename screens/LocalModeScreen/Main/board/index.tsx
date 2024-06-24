@@ -3,7 +3,7 @@ import { Chair } from "./chair"
 
 export const Board = () => {
   // const width = Dimensions.get("screen").width
-  // const height = Dimensions.get("screen").height
+  const height = Dimensions.get("screen").height
   const minWH = 400
   const chair_r = 24
   const circle_r = minWH * 0.4 - chair_r
@@ -12,10 +12,12 @@ export const Board = () => {
     <View
       style={{
         position: "absolute",
+        top: height * 0.6,
+        left: "auto",
       }}
     >
       {
-        Array.from({length: 12}, (_, i) => i+1).map(index => {
+        [1,2,3,4,5,6,7,8,9,10,11,12].map(index => {
           const deg = 360 / 12
           const radians = (deg * Math.PI) / 180
           const radian120 = 120 * Math.PI / 180
@@ -23,7 +25,7 @@ export const Board = () => {
           var y = Math.sin(radians * index - radian120) * circle_r -chair_r;
           return (
             <Chair
-              visible={(index !== 1) && (index !== 2) } //テスト
+              visible={true} //テスト
               key={index}
               index={index}
               x={x}

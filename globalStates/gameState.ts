@@ -1,16 +1,20 @@
 import { atom, useRecoilState } from "recoil";
-import { PlayerState } from "./playersState";
+import { PlayerState, defaultPlayersState } from "./playersState";
 
 
 export type GameState = {
   players: PlayerState[];
-  currentPlayer: PlayerState,
+  currentPlayerIndex: 0,
   currentTurn: number,
 }
 
 export const gameStateAtom = atom<GameState>({
   key: 'gameStateAtom',
-  default: {} as GameState
+  default: {
+    players: defaultPlayersState,
+    currentPlayerIndex: 0,
+    currentTurn: 1,
+  } as GameState
 });
 
 export const useGameState = () => useRecoilState(gameStateAtom)

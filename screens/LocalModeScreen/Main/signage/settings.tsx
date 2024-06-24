@@ -32,8 +32,8 @@ export const Settings = () => {
       <SafeAreaView
         style={{
           position: 'absolute',
-          right: 16,
           top: 100,
+          right: 16,
         }}
       >
         <Button
