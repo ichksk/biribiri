@@ -23,7 +23,7 @@ export const PlayerSelect = () => {
         <Text
           style={{
             fontSize: 32,
-            fontFamily: "TsunagiGothic",
+            fontFamily: "YasashisaGothicBold",
           }}
         >プレイヤー設定</Text>
       </View>

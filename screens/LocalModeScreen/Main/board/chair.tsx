@@ -1,5 +1,7 @@
 import { Text } from "@rneui/base"
 import { TouchableOpacity } from "react-native"
+import { useDialogVisible, useSelectedChair } from "./context"
+import * as Haptics from "expo-haptics"
 
 export type ChairProps = {
   index: number,
@@ -9,6 +11,9 @@ export type ChairProps = {
 }
 
 export const Chair = (props:ChairProps) => {
+  const [ , setDialogVisible ] = useDialogVisible()
+  const [ , setSelectedChair ] = useSelectedChair()
+
   return (
     <TouchableOpacity
       style={{
@@ -25,13 +30,15 @@ export const Chair = (props:ChairProps) => {
         alignItems: "center",
         justifyContent: "center",
       }}
-      onPress={() => {
-        console.log(props.index)
+      onPress={async () => {
+        await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+        setDialogVisible(true)
+        setSelectedChair(props.index)
       }}
     >
       <Text
         style={{
-          fontFamily: "TsunagiGothic",
+          fontFamily: "YasashisaGothicBold",
           fontSize: 16
         }}
       >{props.index}</Text>

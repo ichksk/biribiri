@@ -2,6 +2,7 @@ import { Avatar, AvatarProps, Dialog } from "@rneui/base"
 import { usePlayer } from "globalStates/playersState"
 import { useState } from "react";
 import { TouchableOpacity, View } from "react-native";
+import * as Haptics from "expo-haptics"
 
 export interface PlayerAvatarProps extends AvatarProps {
   index: number;
@@ -51,6 +52,7 @@ export const PlayerAvatar = (props: PlayerAvatarProps ) => {
           overlayStyle={{
             backgroundColor: "white",
             borderRadius: 16,
+            maxWidth: 400,
           }}
           onBackdropPress={() => setDialogOpen(false)}
         >
@@ -77,6 +79,7 @@ export const PlayerAvatar = (props: PlayerAvatarProps ) => {
                     rounded
                     source={avatar2source(String(y*3+x+1).padStart(3, "0"))}
                     onPress={() => {
+                      Haptics.selectionAsync()
                       setPlayer(prev => ({
                         ...prev,
                         avatar: String(y*3+x+1).padStart(3, "0")
@@ -94,8 +97,11 @@ export const PlayerAvatar = (props: PlayerAvatarProps ) => {
       }
 
       <TouchableOpacity
-        onPress={() => {
-          setDialogOpen(prev=>!prev)
+        onPress={async () => {
+          if(props.editable){
+            await Haptics.selectionAsync()
+            setDialogOpen(prev=>!prev)
+          }
         }}
         activeOpacity={props.editable ? 0.6 : 1}
       >

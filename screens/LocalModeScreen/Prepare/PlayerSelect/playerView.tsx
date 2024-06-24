@@ -13,7 +13,7 @@ export const PlayerView = ({index} : {index: number}) => {
       >
         <Text
           style={{
-            fontFamily: "TsunagiGothic",
+            fontFamily: "YasashisaGothicBold",
             fontSize: 24,
           }}
         >プレイヤー{index+1}</Text>

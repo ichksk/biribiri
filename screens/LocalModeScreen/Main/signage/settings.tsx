@@ -4,8 +4,7 @@
 import { Button, Dialog, Icon, Text } from "@rneui/base"
 import { useScreenState } from "globalStates/screenState"
 import { useState } from "react"
-import { SafeAreaView, View } from "react-native"
-import { StyledText } from "src/components/styledText"
+import { SafeAreaView } from "react-native"
 
 export const Settings = () => {
   const [ visible, setVisible ] = useState(false)
@@ -21,9 +20,17 @@ export const Settings = () => {
           borderRadius: 16,
         }}
       >
-        <StyledText>設定</StyledText>
+        <Text
+          style={{
+            fontFamily: "YasashisaGothicBold",
+            fontSize: 24,
+          }}
+        >設定</Text>
         <Button
           title="ゲームをやめる"
+          titleStyle={{
+            fontFamily: "TsunagiGothic",
+          }}
           onPress={() => {
             setScreenState("Title")
           }}

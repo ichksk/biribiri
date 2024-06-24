@@ -6,7 +6,7 @@ export type PlayerState = {
   score: number;
 }
 
-function getRandomAvatar(): string {
+export const getRandomAvatar = () => {
   const min = 1;
   const max = 24;
   const index = Math.floor(Math.random() * (max - min + 1) + min); // 上限を含み、下限も含む

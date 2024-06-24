@@ -13,6 +13,11 @@ export default function App() {
   const [fontsLoaded, fontError] = useFonts({
     "KaijuFont": require("./assets/fonts/kaijufont-free.otf"),
     "TsunagiGothic": require("./assets/fonts/TsunagiGothic.ttf"),
+    "SenobiGothicBold": require("./assets/fonts/Senobi-Gothic-Bold.ttf"),
+    "SenobiGothicMedium": require("./assets/fonts/Senobi-Gothic-Medium.ttf"),
+    "SenobiGothicRegular": require("./assets/fonts/Senobi-Gothic-Regular.ttf"),
+    "YasashisaGothicBold": require("./assets/fonts/YasashisaGothicBold.otf"),
+
   })
 
   const onLayoutRootView = useCallback(async () => {
