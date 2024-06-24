@@ -1,6 +1,6 @@
 import { Text } from "@rneui/base"
 import { TouchableOpacity } from "react-native"
-import { useDialogVisible, useSelectedChair } from "./context"
+import { useSelectedChair } from "../context"
 import * as Haptics from "expo-haptics"
 
 export type ChairProps = {
@@ -11,8 +11,7 @@ export type ChairProps = {
 }
 
 export const Chair = (props:ChairProps) => {
-  const [ , setDialogVisible ] = useDialogVisible()
-  const [ , setSelectedChair ] = useSelectedChair()
+  const [ selectedChair, setSelectedChair ] = useSelectedChair()
 
   return (
     <TouchableOpacity
@@ -23,8 +22,8 @@ export const Chair = (props:ChairProps) => {
         position: "absolute",
         top: props.y,
         left: props.x,
-        borderRadius: 30,
-        backgroundColor: "white",
+        borderRadius: 24,
+        backgroundColor: selectedChair === props.index ? "#FFCC33" : "white",
         borderColor: "black",
         borderWidth: 1,
         alignItems: "center",
@@ -32,9 +31,9 @@ export const Chair = (props:ChairProps) => {
       }}
       onPress={async () => {
         await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
-        setDialogVisible(true)
         setSelectedChair(props.index)
       }}
+      activeOpacity={1}
     >
       <Text
         style={{

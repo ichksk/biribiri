@@ -1,5 +1,5 @@
 import { Avatar, AvatarProps, Dialog } from "@rneui/base"
-import { usePlayer } from "globalStates/playersState"
+import { usePlayer } from "globalStates/gameState"
 import { useState } from "react";
 import { TouchableOpacity, View } from "react-native";
 import * as Haptics from "expo-haptics"
