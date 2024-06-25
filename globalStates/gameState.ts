@@ -69,3 +69,16 @@ export const currentStepAtom = atom<number>({
   default: 1,
 })
 export const useCurrentStep = () => useRecoilState(currentStepAtom)
+
+
+export const selectedChairAtom = atom<number>({
+  key: "selectedChairAtom",
+  default: -1,
+})
+export const useSelectedChair = () => useRecoilState(selectedChairAtom)
+
+export const answeredChairAtom = atom<number>({
+  key: "answeredChairAtom",
+  default: -1,
+})
+export const useAnsweredChair = () => useRecoilState(answeredChairAtom)

@@ -6,6 +6,7 @@ import * as Haptics from "expo-haptics"
 
 export interface PlayerAvatarProps extends AvatarProps {
   index: number;
+  size?: number;
   editable?: boolean;
 }
 
@@ -75,10 +76,10 @@ export const PlayerAvatar = (props: PlayerAvatarProps ) => {
                 {[0, 1, 2, 3].map((x) => (
                   <Avatar
                     key={x}
-                    size={64}
+                    size={props.size || 64}
                     rounded
                     source={avatar2source(String(y*3+x+1).padStart(3, "0"))}
-                    onPress={() => {
+                    onPress={async () => {
                       Haptics.selectionAsync()
                       setPlayer(prev => ({
                         ...prev,
@@ -99,7 +100,7 @@ export const PlayerAvatar = (props: PlayerAvatarProps ) => {
       <TouchableOpacity
         onPress={async () => {
           if(props.editable){
-            await Haptics.selectionAsync()
+            Haptics.selectionAsync()
             setDialogOpen(prev=>!prev)
           }
         }}

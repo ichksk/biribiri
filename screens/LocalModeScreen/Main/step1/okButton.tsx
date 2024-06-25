@@ -1,9 +1,9 @@
 import { Button, Text } from "@rneui/base"
-import { useDialogVisible, useSelectedChair } from "./context"
+import { useDialogVisible, useCurrentChair } from "../context"
 
 export const OkButton = () => {
   const [ , setDialogVisible ] = useDialogVisible()
-  const [ selectedChair ] = useSelectedChair()
+  const [ currentChair ] = useCurrentChair()
   return (
     <Button
       onPress={() => {
@@ -11,7 +11,7 @@ export const OkButton = () => {
       }}
       containerStyle={{
         position: "absolute",
-        bottom: 100,
+        bottom: 40,
         borderRadius: 8,
       }}
       buttonStyle={{
@@ -20,7 +20,7 @@ export const OkButton = () => {
         backgroundColor: "#FF9933",
       }}
       activeOpacity={0.6}
-      disabled={selectedChair == -1}
+      disabled={currentChair == -1}
     >
       <Text
         style={{

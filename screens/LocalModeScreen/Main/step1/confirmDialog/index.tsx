@@ -1,26 +1,17 @@
 import { Dialog, Icon, Text } from "@rneui/base"
-import { useDialogVisible, useSelectedChair } from "../context"
+import { useDialogVisible, useCurrentChair } from "../../context"
 import { OkButton } from "./okButton"
 import { NoButton } from "./noButton"
 import { StyleSheet, View } from "react-native"
 
 export const ConfirmDialog = () => {
   const [ dialogVisible, setDialogVisible ] = useDialogVisible()
-  const [ selectedChair ] = useSelectedChair()
+  const [ currentChair ] = useCurrentChair()
 
   const ConfirmMessage = (
-    <>
-    <Text style={styles.confirmMessage}>「{selectedChair}番」にデンキイス</Text>
-    <Icon
-      iconStyle={{
-        color: "#FFCC33",
-      }}
-      name="lightning-bolt"
-      type="material-community"
-    />
-    <Text style={styles.confirmMessage}>をしかけますか？</Text>
-    </>
-
+    <Text style={styles.confirmMessage}>
+      「{currentChair}番」にデンキイスをしかけますか？
+    </Text>
   )
 
   return (
@@ -40,11 +31,12 @@ export const ConfirmDialog = () => {
       >
         <View
           style={{
+            paddingVertical: 16,
             flexDirection: "row",
             alignItems: "center",
           }}
         >
-          {ConfirmMessage}
+          <Text style={styles.confirmMessage}>「{currentChair}番」にデンキイスをしかけますか？</Text>
         </View>
         <View
           style={{

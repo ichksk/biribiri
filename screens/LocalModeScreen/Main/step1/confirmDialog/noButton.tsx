@@ -1,4 +1,4 @@
-import { useDialogVisible } from "../context"
+import { useDialogVisible } from "../../context"
 import { StyledButton } from "./styledButton"
 
 export const NoButton = () => {

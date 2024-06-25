@@ -1,10 +1,12 @@
-import { useCurrentStep } from "globalStates/gameState"
-import { useDialogVisible } from "../context"
+import { useCurrentStep, useSelectedChair } from "globalStates/gameState"
+import { useCurrentChair, useDialogVisible } from "../../context"
 import { StyledButton } from "./styledButton"
 
 export const OkButton = () => {
   const [ , setDialogVisible] = useDialogVisible()
   const [ , setCurrentStep ] = useCurrentStep()
+  const [ , setSelectedChair ] = useSelectedChair()
+  const [ currentChair ] = useCurrentChair()
 
   return (
     <StyledButton
@@ -21,6 +23,7 @@ export const OkButton = () => {
       onPress={() => {
         setCurrentStep(prev=>prev+1)
         setDialogVisible(false)
+        setSelectedChair(currentChair)
       }}
     />
   )

@@ -1,10 +1,10 @@
 import { View } from "react-native"
-import { Button, Text } from "@rneui/base"
-import { useCurrentStep, useCurrentTurn } from "globalStates/gameState"
+import { Text } from "@rneui/base"
+import { useCurrentTurn } from "globalStates/gameState"
 import { PlayerAvatar } from "src/components/playerAvatar"
+import { NextButton } from "./nextButton"
 
 export const Step2 = () => {
-  const [ , setCurrentStep ] = useCurrentStep()
   const [ currentTurn ] = useCurrentTurn()
 
 
@@ -15,6 +15,7 @@ export const Step2 = () => {
         width: "100%",
         justifyContent: "center",
         alignItems: "center",
+        gap: 32,
       }}
     >
       <View
@@ -40,30 +41,7 @@ export const Step2 = () => {
           fontFamily: "TsunagiGothic",
           fontSize: 36,
       }}>相手にスマホを渡してください</Text>
-      <Button
-        onPress={() => {
-          setCurrentStep(prev=>prev+1)
-        }}
-        containerStyle={{
-          position: "absolute",
-          bottom: 100,
-          borderRadius: 8,
-        }}
-        buttonStyle={{
-          paddingHorizontal: 24,
-          paddingVertical: 16,
-          backgroundColor: "#FF9933",
-        }}
-        activeOpacity={0.6}
-      >
-        <Text
-          style={{
-            fontFamily: "TsunagiGothic",
-            fontSize: 24,
-            color: "white",
-          }}
-        >はい</Text>
-      </Button>
+      <NextButton/>
     </View>
   )
 }
