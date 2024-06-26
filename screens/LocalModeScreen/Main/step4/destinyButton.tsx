@@ -1,18 +1,24 @@
 import { Button, Text } from "@rneui/base"
 import { useDialogVisible } from "../context"
 import { useCheckResult } from "./context"
-import { useCurrentStep } from "globalStates/gameState"
+import { useAnsweredChair, useCurrentStep, useCurrentTurn, useRestChairs, useSelectedChair } from "globalStates/gameState"
 
 export const DestinyButton = () => {
   const [ , setDialogVisible ] = useDialogVisible()
   const [ checkResult ] = useCheckResult()
   const [ , setCurrentStep ] = useCurrentStep()
+  const [ , setRestChairs ] = useRestChairs()
+  const [ answeredChair ] = useAnsweredChair()
+  const [ selectedChair ] = useSelectedChair()
+  const [ , setCurrentTurn ] = useCurrentTurn()
 
   const showResult = () => {
     setDialogVisible(true)
   }
 
   const moveNext = () => {
+    setCurrentTurn(prev=>prev+1)
+    answeredChair !== selectedChair && setRestChairs(prev=>prev.filter(value=>value!==answeredChair))
     setCurrentStep(prev=>prev+1)
   }
 

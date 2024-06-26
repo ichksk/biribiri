@@ -47,7 +47,8 @@ export const Settings = () => {
           type="clear"
           icon={
             <Icon
-              name="settings"
+              name="three-bars"
+              type="octicon"
               size={32}
               color="black"
             />

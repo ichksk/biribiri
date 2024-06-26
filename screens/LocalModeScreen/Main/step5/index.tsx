@@ -1,7 +1,10 @@
 import { Text } from "@rneui/base"
 import { View } from "react-native"
+import { CurrentScore } from "./currentScore"
+import { OkButton } from "./okButton"
 
 export const Step5 = () => {
+  //現在の得点を表示させる
   return (
     <View
       style={{
@@ -11,7 +14,9 @@ export const Step5 = () => {
         alignItems: "center",
       }}
     >
-      <Text>ステップ5</Text>
+      <Text>現在の得点</Text>
+      <CurrentScore/>
+      <OkButton/>
     </View>
   )
 }

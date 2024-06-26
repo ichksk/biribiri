@@ -3,6 +3,7 @@ import { SetterOrUpdater, atom, useRecoilState } from "recoil";
 export type PlayerState = {
   avatar: string;
   score: number;
+  damage: number;
 }
 
 export const getRandomAvatar = () => {
@@ -16,10 +17,12 @@ export const defaultPlayersState: PlayerState[] = [
   {
     avatar: getRandomAvatar(),
     score: 0,
+    damage: 0,
   },
   {
     avatar: getRandomAvatar(),
     score: 0,
+    damage: 0
   }
 ] as const
 
