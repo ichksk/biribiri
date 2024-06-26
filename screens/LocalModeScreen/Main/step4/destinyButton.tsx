@@ -2,6 +2,7 @@ import { Button, Text } from "@rneui/base"
 import { useDialogVisible } from "../context"
 import { useCheckResult } from "./context"
 import { useAnsweredChair, useCurrentStep, useCurrentTurn, useRestChairs, useSelectedChair } from "globalStates/gameState"
+import { Vibration } from "react-native"
 
 export const DestinyButton = () => {
   const [ , setDialogVisible ] = useDialogVisible()
@@ -14,6 +15,8 @@ export const DestinyButton = () => {
 
   const showResult = () => {
     setDialogVisible(true)
+
+    answeredChair===selectedChair && Vibration.vibrate()
   }
 
   const moveNext = () => {
