@@ -13,12 +13,12 @@ export const OkButton = () => {
       title="OK"
       containerStyle={{
         borderWidth: 1,
-        borderColor: "red",
-        backgroundColor: "red",
+        borderColor: "#F06060",
+        backgroundColor: "#F06060",
       }}
 
       buttonStyle={{
-        backgroundColor: "red"
+        backgroundColor: "#F06060"
       }}
       onPress={() => {
         setCurrentStep(prev=>prev+1)

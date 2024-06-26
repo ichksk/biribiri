@@ -1,9 +1,10 @@
-import { View } from "react-native"
 import { BoardWithAvatar } from "../board"
+import { SafeAreaView } from "react-native"
+import { DestinyButton } from "./destinyButton"
 
 export const Step4 = () => {
   return (
-    <View
+    <SafeAreaView
       style={{
         flex: 1,
         width: "100%",
@@ -12,6 +13,7 @@ export const Step4 = () => {
       }}
     >
       <BoardWithAvatar/>
-    </View>
+      <DestinyButton/>
+    </SafeAreaView>
   )
 }

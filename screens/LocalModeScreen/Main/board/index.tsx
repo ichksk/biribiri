@@ -1,9 +1,7 @@
-import { Dimensions, TouchableOpacity, View } from "react-native"
+import { Dimensions, View } from "react-native"
 import { Chair } from "./chair"
 import { useAnsweredChair, useCurrentTurn, useRestChairs } from "globalStates/gameState"
-import { useCurrentChair } from "../context"
 import { PlayerAvatar } from "src/components/playerAvatar"
-import { Text } from "@rneui/base"
 
 export const Board = () => {
   const height = Dimensions.get("screen").height
@@ -53,13 +51,11 @@ export const BoardWithAvatar = () => {
   const [ currentTurn ] = useCurrentTurn()
   const [ answeredChair ] = useAnsweredChair()
 
-  console.log(answeredChair)
-
   return (
     <View
       style={{
         position: "absolute",
-        top: height * 0.55,
+        top: height * 0.50,
         left: "auto",
       }}
     >
@@ -81,6 +77,7 @@ export const BoardWithAvatar = () => {
                 />
               : (
                 <View
+                  key={index}
                   style={{
                     width: 48,
                     height: 48,
@@ -98,8 +95,7 @@ export const BoardWithAvatar = () => {
                   />
                 </View>
               )
-              
-            }
+              }
             </>
           )
         })
