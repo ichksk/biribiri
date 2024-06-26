@@ -1,11 +1,12 @@
 import { useEffect } from "react"
 import { SafeAreaView } from "react-native"
 import { useAnsweredChair, useCurrentStep, useCurrentTurn, useRestChairs, useSelectedChair } from "globalStates/gameState"
+import { Settings } from "./settings"
 import { Step1 } from "./step1"
 import { Step2 } from "./step2"
 import { Step3 } from "./step3"
-import { Settings } from "./settings"
 import { Step4 } from "./step4"
+import { Step5 } from "./step5"
 
 //スコアを表示するボード
 //円盤上にChairを描画する
@@ -43,6 +44,7 @@ export const Main = () => {
         {currentStep===2 && <Step2/>}
         {currentStep===3 && <Step3/>}
         {currentStep===4 && <Step4/>}
+        {currentStep===5 && <Step5/>}
       </SafeAreaView>
       <Settings/>
     </>

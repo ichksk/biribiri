@@ -1,24 +1,17 @@
 import { Button, Text } from "@rneui/base"
-import { useDialogVisible } from "../context"
-import { useCheckResult } from "./context"
-import { useCurrentStep } from "globalStates/gameState"
+import { useDialogVisible } from "../../context"
+import { useCheckResult } from "../context"
 
-export const DestinyButton = () => {
+export const CloseButton = () => {
   const [ , setDialogVisible ] = useDialogVisible()
-  const [ checkResult ] = useCheckResult()
-  const [ , setCurrentStep ] = useCurrentStep()
-
-  const showResult = () => {
-    setDialogVisible(true)
-  }
-
-  const moveNext = () => {
-    setCurrentStep(prev=>prev+1)
-  }
+  const [ , setCheckResult ] = useCheckResult()
 
   return (
     <Button
-      onPress={() => checkResult ? moveNext() : showResult()}
+      onPress={() => {
+        setDialogVisible(false)
+        setCheckResult(true)
+      }}
       containerStyle={{
         position: "absolute",
         bottom: 40,
@@ -37,7 +30,7 @@ export const DestinyButton = () => {
           fontSize: 24,
           color: "white",
         }}
-      >{checkResult ? "次へ" : "ドキドキ。。。"}</Text>
+      >閉じる</Text>
     </Button>
   )
 }

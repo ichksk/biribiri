@@ -30,7 +30,7 @@ export const Step2 = () => {
           index={(currentTurn-1) % 2}
         />
         <Text style={{
-          fontFamily: "TsunagiGothic",
+          fontFamily: "YasashisaGothicBold",
           fontSize: 36,
         }}>→</Text>
         <PlayerAvatar
