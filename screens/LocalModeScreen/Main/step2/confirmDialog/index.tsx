@@ -1,8 +1,8 @@
-import { Dialog, Icon, Text } from "@rneui/base"
-import { useDialogVisible, useCurrentChair } from "../../context"
+import { StyleSheet, View } from "react-native"
+import { Dialog, Text } from "@rneui/base"
 import { OkButton } from "./okButton"
 import { NoButton } from "./noButton"
-import { StyleSheet, View } from "react-native"
+import { useDialogVisible, useCurrentChair } from "../../context"
 
 export const ConfirmDialog = () => {
   const [ dialogVisible, setDialogVisible ] = useDialogVisible()

@@ -15,16 +15,10 @@ export const TitleLabel = () => {
         style={{
           fontFamily: "KaijuFont",
           fontSize: 60,
-          color: "#FFCC33"
-        }}
-      >デンキイス</Text>
-      <Text
-        style={{
-          fontFamily: "KaijuFont",
-          fontSize: 60,
           color: "#FFCC33",
+          textAlign: "center",
         }}
-      >ゲーム</Text>
+      >デンキイス{"\n"}ゲーム</Text>
     </SafeAreaView>
   )
 }

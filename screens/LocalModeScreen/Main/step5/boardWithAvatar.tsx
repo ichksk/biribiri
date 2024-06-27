@@ -1,7 +1,7 @@
-import { useAnsweredChair, useCurrentTurn, useRestChairs, useSelectedChair } from "globalStates/gameState"
 import { Dimensions, View } from "react-native"
 import { Chair } from "../board/chair"
 import { PlayerAvatar } from "src/components/playerAvatar"
+import { useAnsweredChair, useCurrentTurn, useRestChairs, useSelectedChair } from "globalStates/gameState"
 
 export const BoardWithAvatar = () => {
   const height = Dimensions.get("screen").height
