@@ -4,7 +4,7 @@ import { PlayerSelect } from "./playerSelect"
 import { ModeContext, useMode } from "src/contexts/mode"
 import { GoBackButton } from "src/components/goBackButton"
 import { GoNextButton } from "src/components/goNextButton"
-import { RuleSelect } from "./ruleSelect"
+// import { RuleSelect } from "./ruleSelect"
 
 export const Prepare = () => {
   const [ prepareMode, setPrepareMode ] = useState(0)
