@@ -1,5 +1,5 @@
-import { Button, Text } from "@rneui/base"
 import { useMode } from "src/contexts/mode"
+import { OrangeButton } from "./orangeButton"
 
 export type GoNextButtonProps = {
   lastIndex: number,
@@ -12,7 +12,7 @@ export const GoNextButton = (props: GoNextButtonProps) => {
   const [ modeState, setModeState ] = useMode()
 
   return (
-    <Button
+    <OrangeButton
       onPress={() => {
         if (modeState === props.lastIndex) {
           props.onLastClicked()
@@ -25,20 +25,9 @@ export const GoNextButton = (props: GoNextButtonProps) => {
         bottom: 100,
         borderRadius: 8,
       }}
-      buttonStyle={{
-        paddingHorizontal: 24,
-        paddingVertical: 16,
-        backgroundColor: "#FF9933",
-      }}
-      activeOpacity={0.6}
-    >
-      <Text
-        style={{
-          fontFamily: "TsunagiGothic",
-          fontSize: 24,
-          color: "white",
-        }}
-      >{modeState !== props.lastIndex ? props.label : props.lastLabel}</Text>
-    </Button>
+
+      title={modeState !== props.lastIndex ? props.label : props.lastLabel}
+    />
+
   )
 }

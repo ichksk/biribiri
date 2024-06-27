@@ -85,3 +85,35 @@ export const answeredChairAtom = atom<number>({
   default: -1,
 })
 export const useAnsweredChair = () => useRecoilState(answeredChairAtom)
+
+export const useInitializeGame = () => {
+  const [ , setCurrentStep ] = useCurrentStep()
+  const [ , setCurrentTurn ]  = useCurrentTurn()
+  const [ , setRestChairs ] = useRestChairs()
+  const [ , setSelectedChair ] = useSelectedChair()
+  const [ , setAnsweredChair ] = useAnsweredChair()
+  const [ , setPlayers ] = usePlayers()
+
+  const initializeGame = () => {
+    setCurrentStep(1)
+    setCurrentTurn(1)
+    setSelectedChair(-1)
+    setAnsweredChair(-1)
+    setPlayers(prev=>([
+      {
+        ...prev[0],
+        score: 0,
+        damage: 0,
+      },
+      {
+        ...prev[1],
+        score: 0,
+        damage: 0,
+      }
+    ]))
+    setRestChairs([1,2,3,4,5,6,7,8,9,10,11,12])
+  }
+
+  return initializeGame
+
+}

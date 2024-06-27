@@ -1,7 +1,7 @@
-import { Button, Text } from "@rneui/base"
 import { useDialogVisible } from "../context"
 import { useAnsweredChair, useSelectedChair } from "globalStates/gameState"
 import { Vibration } from "react-native"
+import { OrangeButton } from "src/components/orangeButton"
 
 export const DestinyButton = () => {
   const [ , setDialogVisible ] = useDialogVisible()
@@ -13,30 +13,10 @@ export const DestinyButton = () => {
     answeredChair===selectedChair && Vibration.vibrate()
   }
 
-
-
   return (
-    <Button
+    <OrangeButton
       onPress={() => showResult()}
-      containerStyle={{
-        position: "absolute",
-        bottom: 40,
-        borderRadius: 8,
-      }}
-      buttonStyle={{
-        paddingHorizontal: 24,
-        paddingVertical: 16,
-        backgroundColor: "#FF9933",
-      }}
-      activeOpacity={0.6}
-    >
-      <Text
-        style={{
-          fontFamily: "TsunagiGothic",
-          fontSize: 24,
-          color: "white",
-        }}
-      >ドキドキ。。。</Text>
-    </Button>
+      title={"ドキドキ。。。"}
+    />
   )
 }

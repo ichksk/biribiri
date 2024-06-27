@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { SafeAreaView } from "react-native"
-import { useAnsweredChair, useCurrentStep, useCurrentTurn, usePlayers, useRestChairs, useSelectedChair } from "globalStates/gameState"
+import { useCurrentStep, useInitializeGame } from "globalStates/gameState"
 import { Settings } from "./settings"
 import { Step1 } from "./step1"
 import { Step2 } from "./step2"
@@ -13,32 +13,13 @@ import { Step5 } from "./step5"
 
 
 export const Main = () => {
-  const [ currentStep, setCurrentStep ] = useCurrentStep()
-  const [ , setCurrentTurn ]  = useCurrentTurn()
-  const [ , setRestChairs ] = useRestChairs()
-  const [ , setSelectedChair ] = useSelectedChair()
-  const [ , setAnsweredChair ] = useAnsweredChair()
-  const [ , setPlayers ] = usePlayers()
+  const [ currentStep ] = useCurrentStep()
+  const initializeGame = useInitializeGame()
+
 
   useEffect(() => {
     //ゲーム開始時の初期化処理
-    setCurrentStep(1)
-    setCurrentTurn(1)
-    setSelectedChair(-1)
-    setAnsweredChair(-1)
-    setPlayers(prev=>([
-      {
-        ...prev[0],
-        score: 0,
-        damage: 0,
-      },
-      {
-        ...prev[1],
-        score: 0,
-        damage: 0,
-      }
-    ]))
-    setRestChairs([1,2,3,4,5,6,7,8,9,10,11,12])
+    initializeGame()
   }, [])
 
 

@@ -1,6 +1,6 @@
-import { Button, Text } from "@rneui/base"
 import { useDialogVisible } from "../../context"
 import { useAnsweredChair, useCurrentStep, useCurrentTurn, usePlayer, useRestChairs, useSelectedChair } from "globalStates/gameState"
+import { OrangeButton } from "src/components/orangeButton"
 
 export const CloseButton = () => {
   const [ , setDialogVisible ] = useDialogVisible()
@@ -12,7 +12,6 @@ export const CloseButton = () => {
 
   const [ currentTurn, setCurrentTurn ] = useCurrentTurn()
   const [ , setPlayer ] = usePlayer(currentTurn%2)
-
 
   const onSuccess = () => {
     setPlayer(prev=>({
@@ -36,32 +35,14 @@ export const CloseButton = () => {
   }
 
   return (
-    <Button
+    <OrangeButton
       onPress={() => {
         setDialogVisible(false)
         moveNext()
         if(answeredChair === selectedChair) onFailure()
         else onSuccess()
       }}
-      containerStyle={{
-        position: "absolute",
-        bottom: 40,
-        borderRadius: 8,
-      }}
-      buttonStyle={{
-        paddingHorizontal: 24,
-        paddingVertical: 16,
-        backgroundColor: "#FF9933",
-      }}
-      activeOpacity={0.6}
-    >
-      <Text
-        style={{
-          fontFamily: "TsunagiGothic",
-          fontSize: 24,
-          color: "white",
-        }}
-      >閉じる</Text>
-    </Button>
+      title={"閉じる"}
+    />
   )
 }

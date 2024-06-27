@@ -9,20 +9,20 @@ export const LocalModeScreen = () => {
   const [ modeState, setModeState ] = useState(0)
 
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        width: "100%",
-        display: "flex",
-        alignItems: 'center',
-        backgroundColor: "#fffbcf",
-      }}
-    >
-      <ModeContext.Provider value={[modeState, setModeState]}>
-        {modeState === 0 && <Prepare/>}
-        {modeState === 1 && <Main/>}
-        {modeState === 2 && <Result/>}
-      </ModeContext.Provider>
-    </SafeAreaView>
+    <ModeContext.Provider value={[modeState, setModeState]}>
+      <SafeAreaView
+        style={{
+          flex: 1,
+          width: "100%",
+          display: "flex",
+          alignItems: 'center',
+          backgroundColor: "#fffbcf",
+        }}
+      >
+          {modeState === 0 && <Prepare/>}
+          {modeState === 1 && <Main/>}
+          {modeState === 2 && <Result/>}
+      </SafeAreaView>
+    </ModeContext.Provider>
   )
 }

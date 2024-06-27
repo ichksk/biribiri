@@ -1,5 +1,5 @@
-import { Button, Text } from "@rneui/base"
 import { useCurrentStep, usePlayers, useRestChairs } from "globalStates/gameState"
+import { OrangeButton } from "src/components/orangeButton"
 import { useMode } from "src/contexts/mode"
 
 export const OkButton = () => {
@@ -13,29 +13,9 @@ export const OkButton = () => {
   }
 
   return (
-    <Button
-      onPress={() => {
-        !isFinished() ? setCurrentStep(prev=>prev+1) : setMode(2)
-      }}
-      containerStyle={{
-        position: "absolute",
-        bottom: 40,
-        borderRadius: 8,
-      }}
-      buttonStyle={{
-        paddingHorizontal: 24,
-        paddingVertical: 16,
-        backgroundColor: "#FF9933",
-      }}
-      activeOpacity={0.6}
-    >
-      <Text
-        style={{
-          fontFamily: "TsunagiGothic",
-          fontSize: 24,
-          color: "white",
-        }}
-      >次へ</Text>
-    </Button>
+    <OrangeButton
+      onPress={() => !isFinished() ? setCurrentStep(prev=>prev+1) : setMode(2)}
+      title={isFinished() ? "ゲーム終了" : "次へ"}
+    />
   )
 }
