@@ -1,16 +1,16 @@
 import { Button, Text } from "@rneui/base"
 import { useDialogVisible } from "../../context"
-import { useCheckResult } from "../context"
-import { useAnsweredChair, useCurrentTurn, usePlayer, useSelectedChair } from "globalStates/gameState"
+import { useAnsweredChair, useCurrentStep, useCurrentTurn, usePlayer, useRestChairs, useSelectedChair } from "globalStates/gameState"
 
 export const CloseButton = () => {
   const [ , setDialogVisible ] = useDialogVisible()
-  const [ , setCheckResult ] = useCheckResult()
+  const [ , setCurrentStep ] = useCurrentStep()
+  const [ , setRestChairs ] = useRestChairs()
 
   const [ answeredChair ] = useAnsweredChair()
   const [ selectedChair ] = useSelectedChair()
 
-  const [ currentTurn ] = useCurrentTurn()
+  const [ currentTurn, setCurrentTurn ] = useCurrentTurn()
   const [ , setPlayer ] = usePlayer(currentTurn%2)
 
 
@@ -29,12 +29,17 @@ export const CloseButton = () => {
     }))
   }
 
+  const moveNext = () => {
+    setCurrentTurn(prev=>prev+1)
+    answeredChair !== selectedChair && setRestChairs(prev=>prev.filter(value=>value!==answeredChair))
+    setCurrentStep(1)
+  }
+
   return (
     <Button
       onPress={() => {
         setDialogVisible(false)
-        setCheckResult(true)
-
+        moveNext()
         if(answeredChair === selectedChair) onFailure()
         else onSuccess()
       }}

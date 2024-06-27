@@ -1,22 +1,25 @@
-import { Text } from "@rneui/base"
-import { View } from "react-native"
-import { CurrentScore } from "./currentScore"
-import { OkButton } from "./okButton"
+import { SafeAreaView } from "react-native"
+import { DestinyButton } from "./destinyButton"
+import { DialogVisibleContext } from "../context"
+import { useState } from "react"
+import { ResultDialog } from "./resultDialog"
+import { BoardWithAvatar } from "./boardWithAvatar"
 
 export const Step5 = () => {
-  //現在の得点を表示させる
   return (
-    <View
-      style={{
-        flex: 1,
-        width: "100%",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>現在の得点</Text>
-      <CurrentScore/>
-      <OkButton/>
-    </View>
-  )
+    <DialogVisibleContext.Provider value={useState(false)}>
+        <SafeAreaView
+          style={{
+            flex: 1,
+            width: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <BoardWithAvatar/>
+          <DestinyButton/>
+        </SafeAreaView>
+        <ResultDialog/>
+    </DialogVisibleContext.Provider>
+    )
 }

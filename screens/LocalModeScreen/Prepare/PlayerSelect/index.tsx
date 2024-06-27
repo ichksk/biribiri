@@ -1,6 +1,6 @@
 import { View } from "react-native"
 import { Text } from "@rneui/base"
-import { PlayerView } from "./playerView"
+import { PlayerAvatar } from "src/components/playerAvatar"
 
 export const PlayerSelect = () => {
   return (
@@ -18,6 +18,9 @@ export const PlayerSelect = () => {
           top: 240,
           padding: 16,
           borderRadius: 16,
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 16,
         }}
       >
         <Text
@@ -26,26 +29,37 @@ export const PlayerSelect = () => {
             fontFamily: "YasashisaGothicBold",
           }}
         >プレイヤー設定</Text>
+        <Text
+          style={{
+            fontSize: 20,
+            fontFamily: "YasashisaGothicBold",
+          }}
+        >アバターを選んでね</Text>
       </View>
       <View
         style={{
           paddingVertical: 48,
           paddingHorizontal: 48,
-          marginTop: 18,
           flexDirection: "row",
           alignItems: "center",
-          justifyContent: "space-between"
+          justifyContent: "center",
+          gap: 24,
         }}
       >
-        <PlayerView index={0}/>
+        <PlayerAvatar
+          index={0}
+          editable
+        />
         <Text
           style={{
             fontFamily: "TsunagiGothic",
             fontSize: 32,
-            marginTop: 40
           }}
         >VS</Text>
-        <PlayerView index={1}/>
+        <PlayerAvatar
+          index={1}
+          editable
+        />
       </View>
     </View>
   )

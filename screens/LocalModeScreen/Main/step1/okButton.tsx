@@ -1,13 +1,21 @@
 import { Button, Text } from "@rneui/base"
-import { useDialogVisible, useCurrentChair } from "../context"
+import { useCurrentStep, usePlayers, useRestChairs } from "globalStates/gameState"
+import { useMode } from "src/contexts/mode"
 
 export const OkButton = () => {
-  const [ , setDialogVisible ] = useDialogVisible()
-  const [ currentChair ] = useCurrentChair()
+  const [ restChairs ] = useRestChairs()
+  const [ players ] = usePlayers()
+  const [ , setCurrentStep ] = useCurrentStep()
+  const [ , setMode ] = useMode()
+
+  const isFinished = () => {
+    return restChairs.length === 0 || players.filter(player=>player.score>=40).length !== 0 || players.filter(player=>player.damage >= 3).length !== 0
+  }
+
   return (
     <Button
       onPress={() => {
-        setDialogVisible(true)
+        !isFinished() ? setCurrentStep(prev=>prev+1) : setMode(2)
       }}
       containerStyle={{
         position: "absolute",
@@ -20,7 +28,6 @@ export const OkButton = () => {
         backgroundColor: "#FF9933",
       }}
       activeOpacity={0.6}
-      disabled={currentChair == -1}
     >
       <Text
         style={{
@@ -28,7 +35,7 @@ export const OkButton = () => {
           fontSize: 24,
           color: "white",
         }}
-      >決定</Text>
+      >次へ</Text>
     </Button>
   )
 }

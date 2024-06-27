@@ -15,6 +15,7 @@ export const OkButton = () => {
         borderWidth: 1,
         borderColor: "#F06060",
         backgroundColor: "#F06060",
+        paddingHorizontal: 16
       }}
 
       buttonStyle={{

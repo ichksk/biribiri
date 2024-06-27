@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { SafeAreaView } from "react-native"
-import { defaultPlayersState, useAnsweredChair, useCurrentStep, useCurrentTurn, usePlayers, useRestChairs, useSelectedChair } from "globalStates/gameState"
+import { useAnsweredChair, useCurrentStep, useCurrentTurn, usePlayers, useRestChairs, useSelectedChair } from "globalStates/gameState"
 import { Settings } from "./settings"
 import { Step1 } from "./step1"
 import { Step2 } from "./step2"
@@ -26,7 +26,18 @@ export const Main = () => {
     setCurrentTurn(1)
     setSelectedChair(-1)
     setAnsweredChair(-1)
-    setPlayers(defaultPlayersState)
+    setPlayers(prev=>([
+      {
+        ...prev[0],
+        score: 0,
+        damage: 0,
+      },
+      {
+        ...prev[1],
+        score: 0,
+        damage: 0,
+      }
+    ]))
     setRestChairs([1,2,3,4,5,6,7,8,9,10,11,12])
   }, [])
 

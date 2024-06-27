@@ -1,16 +1,20 @@
-import { SafeAreaView } from "react-native"
-import { DestinyButton } from "./destinyButton"
-import { DialogVisibleContext } from "../context"
+import { View } from "react-native"
+import { Signage } from "../signage"
+import { useCurrentTurn } from "globalStates/gameState"
+import { Board } from "../board"
 import { useState } from "react"
-import { ResultDialog } from "./resultDialog"
-import { CheckResultContext } from "./context"
-import { BoardWithAvatar } from "./boardWithAvatar"
+import { CurrentChairContext, DialogVisibleContext } from "../context"
+import { OkButton } from "./okButton"
+import { Text } from "@rneui/base"
+import { ConfirmDialog } from "./confirmDialog"
 
 export const Step4 = () => {
+  const [ currentTurn ] = useCurrentTurn()
+
   return (
-    <DialogVisibleContext.Provider value={useState(false)}>
-      <CheckResultContext.Provider value={useState(false)}>
-        <SafeAreaView
+    <CurrentChairContext.Provider value={useState(-1)}>
+      <DialogVisibleContext.Provider value={useState(false)}>
+        <View
           style={{
             flex: 1,
             width: "100%",
@@ -18,11 +22,20 @@ export const Step4 = () => {
             alignItems: "center",
           }}
         >
-          <BoardWithAvatar/>
-          <DestinyButton/>
-        </SafeAreaView>
-        <ResultDialog/>
-      </CheckResultContext.Provider>
-    </DialogVisibleContext.Provider>
-    )
+          <Signage currentPlayerIndex={currentTurn % 2}/>
+          <Board/>
+          <Text
+            style={{
+              fontFamily: "TsunagiGothic",
+              fontSize: 32,
+              position: "absolute",
+              top: 240,
+            }}
+          >イスを選ぼう</Text>
+          <OkButton/>
+        </View>
+        <ConfirmDialog/>
+      </DialogVisibleContext.Provider>
+    </CurrentChairContext.Provider>
+  )
 }

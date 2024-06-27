@@ -1,5 +1,5 @@
-import { Text } from "@rneui/base"
-import { usePlayers } from "globalStates/gameState"
+import { Icon, Text } from "@rneui/base"
+import { useCurrentTurn, usePlayers } from "globalStates/gameState"
 import { View } from "react-native"
 import { PlayerAvatar } from "src/components/playerAvatar"
 
@@ -7,7 +7,12 @@ export const CurrentScore = () => {
   const [ players ] = usePlayers()
 
   return (
-    <View>
+    <View
+      style={{
+        gap: 16,
+      }}
+    >
+
       {players.map((player, index) => (
         <View
           key={index}
@@ -22,9 +27,19 @@ export const CurrentScore = () => {
           <Text
             style={{
               fontFamily: "TsunagiGothic",
-              fontSize: 32
+              fontSize: 32,
+              textAlign: "right",
+              width: 80
             }}
-          >{player.score}、{player.damage}</Text>
+          >{player.score}</Text>
+          {[2,1,0].map(i => (
+            <Icon
+              key={i}
+              name={player.damage>i ? "heart-outline" : "heart"}
+              type="ionicon"
+              color="#ff3333"
+            />
+          ))}
         </View>
       ))}
     </View>

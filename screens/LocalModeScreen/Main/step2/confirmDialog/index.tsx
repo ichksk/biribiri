@@ -8,12 +8,6 @@ export const ConfirmDialog = () => {
   const [ dialogVisible, setDialogVisible ] = useDialogVisible()
   const [ currentChair ] = useCurrentChair()
 
-  const ConfirmMessage = (
-    <Text style={styles.confirmMessage}>
-      「{currentChair}番」にデンキイスをしかけますか？
-    </Text>
-  )
-
   return (
     <Dialog
       isVisible={dialogVisible}
@@ -36,7 +30,7 @@ export const ConfirmDialog = () => {
             alignItems: "center",
           }}
         >
-          <Text style={styles.confirmMessage}>「{currentChair}番」にデンキイスをしかけますか？</Text>
+          <Text style={styles.confirmMessage}>「{currentChair}」にデンキイスをしかけますか？</Text>
         </View>
         <View
           style={{

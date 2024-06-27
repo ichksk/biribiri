@@ -1,8 +1,6 @@
 import { useAnsweredChair, useCurrentTurn, useRestChairs, useSelectedChair } from "globalStates/gameState"
-import { useCheckResult } from "./context"
 import { Dimensions, View } from "react-native"
 import { Chair } from "../board/chair"
-import { Icon } from "@rneui/base"
 import { PlayerAvatar } from "src/components/playerAvatar"
 
 export const BoardWithAvatar = () => {
@@ -14,8 +12,6 @@ export const BoardWithAvatar = () => {
   const [ restChairs ] = useRestChairs()
   const [ currentTurn ] = useCurrentTurn()
   const [ answeredChair ] = useAnsweredChair()
-  const [ selectedChair ] = useSelectedChair()
-  const [ checkResult ] = useCheckResult()
 
   return (
     <View
@@ -49,31 +45,6 @@ export const BoardWithAvatar = () => {
               <PlayerAvatar
                 index={currentTurn%2}
                 size={46}
-              />
-            </View>
-          )
-          else if (checkResult && (selectedChair === index)) return (
-            <View
-              key={index}
-              style={{
-                width: 48,
-                height: 48,
-                position: "absolute",
-                top: y,
-                left: x,
-                borderRadius: 24,
-                borderColor: "black",
-                borderWidth: 1,
-                justifyContent: "center",
-                alignItems: "center",
-                backgroundColor: "white",
-              }}
-            >
-              <Icon
-                name="lightning-bolt"
-                type="material-community"
-                size={38}
-                color={"#FFCC33"}
               />
             </View>
           )

@@ -8,6 +8,8 @@ const PlayerMessages = [
   [
     "余裕だぜ",
     "読み切ってました",
+    "お見通し！",
+
   ],
   [
     "感電した！",
@@ -31,7 +33,6 @@ export const PlayerMessage = () => {
         justifyContent: "space-around",
         width: "100%",
         position: "absolute",
-
       }}
     >
       <PlayerAvatar index={currentTurn%2}/>

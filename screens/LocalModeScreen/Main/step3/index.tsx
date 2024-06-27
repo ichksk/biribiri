@@ -1,41 +1,47 @@
 import { View } from "react-native"
-import { Signage } from "../signage"
-import { useCurrentTurn } from "globalStates/gameState"
-import { Board } from "../board"
-import { useState } from "react"
-import { CurrentChairContext, DialogVisibleContext } from "../context"
-import { OkButton } from "./okButton"
 import { Text } from "@rneui/base"
-import { ConfirmDialog } from "./confirmDialog"
+import { useCurrentTurn } from "globalStates/gameState"
+import { PlayerAvatar } from "src/components/playerAvatar"
+import { NextButton } from "./nextButton"
 
 export const Step3 = () => {
   const [ currentTurn ] = useCurrentTurn()
 
+
   return (
-    <CurrentChairContext.Provider value={useState(-1)}>
-      <DialogVisibleContext.Provider value={useState(false)}>
-        <View
-          style={{
-            flex: 1,
-            width: "100%",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Signage currentPlayerIndex={currentTurn % 2}/>
-          <Board/>
-          <Text
-            style={{
-              fontFamily: "TsunagiGothic",
-              fontSize: 32,
-              position: "absolute",
-              top: 240,
-            }}
-          >イスを選ぼう</Text>
-          <OkButton/>
-        </View>
-        <ConfirmDialog/>
-      </DialogVisibleContext.Provider>
-    </CurrentChairContext.Provider>
+    <View
+      style={{
+        flex: 1,
+        width: "100%",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 32,
+      }}
+    >
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 16,
+        }}
+      >
+        <PlayerAvatar
+          index={(currentTurn-1) % 2}
+        />
+        <Text style={{
+          fontFamily: "YasashisaGothicBold",
+          fontSize: 36,
+        }}>→</Text>
+        <PlayerAvatar
+          index={1 - (currentTurn-1) % 2}
+        />
+      </View>
+      <Text style={{
+          fontFamily: "TsunagiGothic",
+          fontSize: 36,
+      }}>相手にスマホを渡してください</Text>
+      <NextButton/>
+    </View>
   )
 }

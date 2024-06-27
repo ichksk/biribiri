@@ -1,7 +1,9 @@
 import { Text } from "@rneui/base"
 import { SafeAreaView } from "react-native-safe-area-context"
+import { Winner } from "./winner"
 
 export const Result = () => {
+
   return (
     <SafeAreaView
       style={{
@@ -18,6 +20,7 @@ export const Result = () => {
           fontSize: 40
         }}
       >リザルト画面</Text>
+      <Winner/>
     </SafeAreaView>
   )
 }

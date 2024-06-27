@@ -30,7 +30,7 @@ export const ConfirmDialog = () => {
             alignItems: "center",
           }}
         >
-          <Text style={styles.confirmMessage}>「{currentChair}番」に座りますか？</Text>
+          <Text style={styles.confirmMessage}>「{currentChair}」に座りますか？</Text>
         </View>
         <View
           style={{
