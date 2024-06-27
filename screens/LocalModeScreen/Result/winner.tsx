@@ -11,7 +11,7 @@ export const Winner = () => {
       const winnersIndex = players.findIndex(player => player.score === winnersScore)
       return winnersIndex
     } else {
-      const winnersIndex = players.findIndex(player => player.damage !== 3 || player.score >= 40)
+      const winnersIndex = players.findIndex(player => player.damage !== 3 || player.score >= 30)
       return winnersIndex
     }
   }

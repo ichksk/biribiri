@@ -9,7 +9,7 @@ export const OkButton = () => {
   const [ , setMode ] = useMode()
 
   const isFinished = () => {
-    return restChairs.length === 0 || players.filter(player=>player.score>=40).length !== 0 || players.filter(player=>player.damage >= 3).length !== 0
+    return restChairs.length === 1 || players.filter(player=>player.score>=30).length !== 0 || players.filter(player=>player.damage >= 3).length !== 0
   }
 
   return (

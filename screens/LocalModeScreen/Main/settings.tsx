@@ -5,6 +5,8 @@ import { Button, Dialog, Icon, Text } from "@rneui/base"
 import { useScreenState } from "globalStates/screenState"
 import { useState } from "react"
 import { SafeAreaView } from "react-native"
+import { CurrentScore } from "./step1/currentScore"
+import { OrangeButton } from "src/components/orangeButton"
 
 export const Settings = () => {
   const [ visible, setVisible ] = useState(false)
@@ -26,10 +28,12 @@ export const Settings = () => {
             fontSize: 24,
           }}
         >設定</Text>
-        <Button
+        <CurrentScore/>
+        <OrangeButton
           title="ゲームをやめる"
-          titleStyle={{
-            fontFamily: "TsunagiGothic",
+          containerStyle={{
+            position: "relative",
+            borderRadius: 8,
           }}
           onPress={() => {
             setScreenState("Title")

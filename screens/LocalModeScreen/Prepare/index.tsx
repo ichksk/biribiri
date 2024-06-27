@@ -1,9 +1,10 @@
 import { useState } from "react"
 import { SafeAreaView } from "react-native-safe-area-context"
-import { PlayerSelect } from "./PlayerSelect"
+import { PlayerSelect } from "./playerSelect"
 import { ModeContext, useMode } from "src/contexts/mode"
 import { GoBackButton } from "src/components/goBackButton"
 import { GoNextButton } from "src/components/goNextButton"
+import { RuleSelect } from "./ruleSelect"
 
 export const Prepare = () => {
   const [ prepareMode, setPrepareMode ] = useState(0)
