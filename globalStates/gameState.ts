@@ -1,4 +1,5 @@
 import { SetterOrUpdater, atom, useRecoilState } from "recoil";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export type PlayerState = {
   avatar: string;
@@ -61,9 +62,12 @@ export const currentTurnAtom = atom<number>({
 })
 export const useCurrentTurn = () => useRecoilState(currentTurnAtom)
 
+
+const defaultChairs = [1,2,3,4,5,6,7,8,9,10,11,12]
+
 export const restChairsAtom = atom<number[]>({
   key: "restChairsAtom",
-  default: [1,2,3,4,5,6,7,8,9,10,11,12]
+  default: defaultChairs
 })
 export const useRestChairs = () => useRecoilState(restChairsAtom)
 
@@ -111,9 +115,35 @@ export const useInitializeGame = () => {
         damage: 0,
       }
     ]))
-    setRestChairs([1,2,3,4,5,6,7,8,9,10,11,12])
+    setRestChairs(defaultChairs)
   }
 
   return initializeGame
-
 }
+export const MaxHeart = 3 as const
+export const heartConfigAtom = atom<number>({
+  key: "heartConfigAtom",
+  default: new Promise(async (resolve) => {
+    const itemString = await AsyncStorage.getItem("heartConfig")
+    if(itemString === null) {
+      AsyncStorage.setItem("heartConfig", "3")
+      resolve(3)
+    }
+    else resolve(Number(itemString))
+  }),
+})
+export const useHeartConfig = () => useRecoilState(heartConfigAtom)
+
+export const chairConfigAtom = atom<number>({
+  key: "chairConfigAtom",
+  default: new Promise(async (resolve) => {
+    const itemString = await AsyncStorage.getItem("chairConfig")
+    if(itemString === null) {
+      AsyncStorage.setItem("chairConfig", "1")
+      resolve(1)
+    }
+    else resolve(Number(itemString))
+  }),
+
+})
+export const useChairConfig = () => useRecoilState(chairConfigAtom)

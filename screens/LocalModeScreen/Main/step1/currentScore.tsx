@@ -1,10 +1,11 @@
 import { Icon, Text } from "@rneui/base"
-import { useCurrentTurn, usePlayers } from "globalStates/gameState"
+import { useHeartConfig, usePlayers } from "globalStates/gameState"
 import { View } from "react-native"
 import { PlayerAvatar } from "src/components/playerAvatar"
 
 export const CurrentScore = () => {
   const [ players ] = usePlayers()
+  const [ heartConfig ] = useHeartConfig()
 
   return (
     <View
@@ -32,7 +33,7 @@ export const CurrentScore = () => {
               width: 80
             }}
           >{player.score}</Text>
-          {[2,1,0].map(i => (
+          {Array.from({length: heartConfig}, (v, k)=>heartConfig-k).map(i => (
             <Icon
               key={i}
               name={player.damage>i ? "heart-outline" : "heart"}

@@ -2,7 +2,7 @@ import { View } from "react-native"
 import { Text } from "@rneui/base"
 import { PlayerAvatar } from "src/components/playerAvatar"
 
-export const PlayerSelect = () => {
+export const PlayerConfig = () => {
   return (
     <View
       style={{
